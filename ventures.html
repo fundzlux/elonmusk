@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Portfolio | Core Ventures</title>
+    <style>
+        /* Premium Dark Theme Variables */
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --accent: #d4af37; /* Luxury Gold */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: rgba(18, 18, 22, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active { color: var(--accent); }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 140px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 13-Item Grid System */
+        .ventures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .venture-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid #1e1e24;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .venture-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .gallery-image {
+            height: 200px;
+            background-color: #1a1a22;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .venture-card:hover .gallery-image img {
+            transform: scale(1.05);
+        }
+
+        .venture-info {
+            padding: 20px;
+        }
+
+        .venture-number {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .venture-info h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .venture-info p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">TESLA<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="ventures.html" class="active">Ventures</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Strategic Ecosystem Index</h1>
+            <p>An expansive taxonomy mapping 13 core pillars across consumer mobility, heavy transport, orbital logistics, and computational paradigms.</p>
+        </div>
+
+        <div class="ventures-grid">
+            
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=500&q=80" alt="Electric Luxury Sedan">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 01</span>
+                    <h3>Premium Sedans</h3>
+                    <p>Mass-market high-efficiency electric platforms pairing long-range performance with over-the-air architecture updates.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1531327431553-9042b560c5ea?auto=format&fit=crop&w=500&q=80" alt="Electric Sport Utility Vehicle">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 02</span>
+                    <h3>Utility Vehicles</h3>
+                    <p>High-capacity sport utility chassis optimized for structural safety parameters and variable powertrain configurations.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=500&q=80" alt="Electric Semi Truck">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 03</span>
+                    <h3>Commercial Transport</h3>
+                    <p>Class-8 electric semi-trucks designed to dramatically reduce aerodynamic drag and lower freight logistics energy overheads.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80" alt="Angular Metal Prototype">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 04</span>
+                    <h3>Exoskeleton Pickups</h3>
+                    <p>Monolithic ultra-hard cold-rolled stainless steel utility designs engineered for structural puncture resilience.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=500&q=80" alt="Rocket Vertical Launch">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 05</span>
+                    <h3>Orbital Logistics</h3>
+                    <p>Vertical-takeoff, vertical-landing medium-to-heavy lift launch vectors reducing commercial space flight costs.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=500&q=80" alt="Heavy Aerospace Rocket">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 06</span>
+                    <h3>Deep-Space Transit</h3>
+                    <p>Next-generation fully reusable launch super-structures built to carry high tonnage payloads to interplanetary destinations.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80" alt="Satellite Network Earth Orbit">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 07</span>
+                    <h3>Global Mesh Networks</h3>
+                    <p>Low-Earth orbit satellite constellations delivering high-speed, low-latency broadband internet across geographical borders.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=500&q=80" alt="Biomedical Science Laboratory">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 08</span>
+                    <h3>Brain-Machine Interfaces</h3>
+                    <p>Ultra-high bandwidth implantable micro-chips built to connect human cognitive processing directly with external machines.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" alt="Subterranean Concrete Tunnel">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 09</span>
+                    <h3>Subterranean Infrastructure</h3>
+                    <p>Fast-to-excavate transit networks minimizing above-ground urban traffic footprint via automated loop transport routing.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=500&q=80" alt="AI Neural Matrix Screen">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 10</span>
+                    <h3>Cognitive Computations</h3>
+                    <p>Advanced conversational AI cores and neural deep-learning systems tracking multi-modal query pipelines.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=500&q=80" alt="Humanoid Mechanical Robot Hand">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 11</span>
+                    <h3>Autonomous Humanoids</h3>
+                    <p>Bi-pedal general purpose robotic platforms designed to safely execute repetitive structural or industrial manufacturing tasks.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=500&q=80" alt="Solar Panels Architecture">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 12</span>
+                    <h3>Integrated Solar Roofs</h3>
+                    <p>Photovoltaic textured glass tiles designed to seamlessly collect solar harvest directly into home power storage cells.</p>
+                </div>
+            </div>
+
+            <div class="venture-card">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=500&q=80" alt="Server Hardware Mainframe">
+                </div>
+                <div class="venture-info">
+                    <span class="venture-number">Sector 13</span>
+                    <h3>Supercomputing Clusters</h3>
+                    <p>Massive custom computing clusters built explicitly to process complex neural network training streams for autonomy models.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Executive Portfolio. Prepared for Web Hosting.</p>
+    </footer>
+
+</body>
+</html>

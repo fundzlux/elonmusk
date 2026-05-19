@@ -1,313 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesla Workspace | Dashboard</title>
+    <title>Automotive Innovations | Engineering Careers</title>
     <style>
         :root {
-            --tesla-black: #171a20;
-            --tesla-gray: #393c41;
-            --tesla-light-gray: #f4f4f4;
-            --tesla-blue: #3d69e1;
-            --text-dark: #171a20;
-            --success-green: #2e7d32;
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --accent: #d4af37; /* Luxury Gold */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Gotham SSm', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: #ffffff;
-            color: var(--text-dark);
-            display: flex;
-            min-height: 100vh;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            padding: 60px 20px;
         }
 
-        /* Sidebar Navigation */
-        aside {
-            width: 250px;
-            background-color: var(--tesla-light-gray);
-            padding: 30px 24px;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid #e2e4e4;
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .logo svg {
-            width: 100px;
-            height: 20px;
-            fill: var(--tesla-black);
-            margin-bottom: 40px;
+        header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--tesla-gray);
-            font-size: 14px;
-            font-weight: 500;
-            padding: 12px 16px;
-            border-radius: 12px;
-            display: block;
-            transition: all 0.2s ease;
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            background-color: rgba(0, 0, 0, 0.05);
-            color: var(--tesla-black);
-        }
-
-        .nav-links a.highlight {
-            color: var(--tesla-blue);
-            font-weight: 600;
-        }
-
-        /* Main Content Area */
-        main {
-            flex: 1;
-            padding: 40px;
-            overflow-y: auto;
-        }
-
-        .header-profile {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 500;
-            letter-spacing: -0.5px;
-        }
-
-        .profile-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            background-color: var(--tesla-black);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
+        /* Job Grid Layout */
+        .job-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1max));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             margin-bottom: 40px;
         }
 
-        .stat-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e4e4;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        .job-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid #1e1e24;
+            padding: 35px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .stat-card h3 {
-            font-size: 13px;
-            color: var(--tesla-gray);
+        .job-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .job-dept {
+            color: var(--accent);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        .stat-card .value {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--tesla-black);
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        /* Product Fleet Section */
-        .section-title {
-            font-size: 20px;
-            font-weight: 500;
+        .job-meta {
             margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            padding: 15px 0;
         }
 
-        .product-table-container {
-            border: 1px solid #e2e4e4;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        .meta-item {
+            display: block;
+            margin-bottom: 5px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 14px;
+        .meta-item strong {
+            color: var(--text-main);
         }
 
-        th {
-            background-color: var(--tesla-light-gray);
-            color: var(--tesla-gray);
-            padding: 16px 24px;
-            font-weight: 500;
+        .job-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .apply-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--text-main);
+            text-decoration: none;
             text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
 
-        td {
-            padding: 18px 24px;
-            border-bottom: 1px solid #e2e4e4;
-            color: var(--tesla-black);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        .badge {
-            background-color: #e8f5e9;
-            color: var(--success-green);
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            aside { width: 100%; border-right: none; border-bottom: 1px solid #e2e4e4; }
-            main { padding: 20px; }
+        .apply-btn:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
         }
     </style>
 </head>
 <body>
 
-    <aside>
-        <div class="logo">
-            <svg viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 1.1A9.7 9.7 0 0 1 7 0h11l.5.1a10 10 0 0 1 5.4 3.1L28.2 8l4.3-4.8A10 10 0 0 1 38 0h11a9.7 9.7 0 0 1 7 1.1 10.3 10.3 0 0 1 3.5 5.3L63 21.6h-7.6l-2-6H32.7l-2 6h-7.7l3.7-15.3A10.3 10.3 0 0 1 30.2 11l4.4-4.9L30 1.3H19l-4 4.8 3.7 15.5h-7.7L7 6.4A10.3 10.3 0 0 1 10.5 1.1zM106.2 0h7.6v21.6h-7.6zM137 0h37.4v4.3h-29.8v4.3h28v4.2h-28v4.5h29.8v4.3H137zm52.2 4.3h-16.1V0h39.8v4.3h-16v17.3h-7.7zm57.2 13h23v4.3h-30.6V0h7.6v17.3zm60.7-13h-16.1V0h39.8v4.3h-16v17.3h-7.7zM32.7 11.3h20.7L43 3.1z"/>
-            </svg>
+    <div class="dashboard-container">
+        <header>
+            <h1>Global Talent Acquisition</h1>
+            <p>Join an elite engineering structure focused on scalable sustainable transit, automated assembly systems, and high-performance vehicular architectures.</p>
+        </header>
+
+        <div class="job-grid">
+            <div class="job-card">
+                <div>
+                    <span class="job-dept">Research & Development</span>
+                    <h2 class="job-title">EV Powertrain Engineer</h2>
+                    <div class="job-meta">
+                        <span class="meta-item"><strong>Location:</strong> Austin, TX (Hybrid)</span>
+                        <span class="meta-item"><strong>Classification:</strong> Full-Time</span>
+                        <span class="meta-item"><strong>Compensation:</strong> $185 / hr</span>
+                    </div>
+                    <p class="job-description">Optimize thermal management systems and power distribution architectures for next-generation electric drivetrains.</p>
+                </div>
+                <a href="apply.html" class="apply-btn">Apply For Position</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <span class="job-dept">Artificial Intelligence</span>
+                    <h2 class="job-title">Autonomous Systems Developer</h2>
+                    <div class="job-meta">
+                        <span class="meta-item"><strong>Location:</strong> Palo Alto, CA (On-Site)</span>
+                        <span class="meta-item"><strong>Classification:</strong> Full-Time</span>
+                        <span class="meta-item"><strong>Compensation:</strong> $200 / hr</span>
+                    </div>
+                    <p class="job-description">Deploy computer vision models and sensor fusion algorithms to enhance real-time navigation capabilities.</p>
+                </div>
+                <a href="apply.html" class="apply-btn">Apply For Position</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <span class="job-dept">Manufacturing Engineering</span>
+                    <h2 class="job-title">Chassis Dynamics Specialist</h2>
+                    <div class="job-meta">
+                        <span class="meta-item"><strong>Location:</strong> Berlin, DE (On-Site)</span>
+                        <span class="meta-item"><strong>Classification:</strong> Full-Time</span>
+                        <span class="meta-item"><strong>Compensation:</strong> $165 / hr</span>
+                    </div>
+                    <p class="job-description">Analyze structural rigidity, suspension geometry, and high-stress material behaviors during high-performance testing cycles.</p>
+                </div>
+                <a href="apply.html" class="apply-btn">Apply For Position</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <span class="job-dept">Energy Infrastructure</span>
+                    <h2 class="job-title">Grid Storage Architect</h2>
+                    <div class="job-meta">
+                        <span class="meta-item"><strong>Location:</strong> Nevada Gigafactory</span>
+                        <span class="meta-item"><strong>Classification:</strong> Full-Time</span>
+                        <span class="meta-item"><strong>Compensation:</strong> $175 / hr</span>
+                    </div>
+                    <p class="job-description">Design and scale commercial-tier battery deployment projects integrated with microgrid controller software for industrial deployment.</p>
+                </div>
+                <a href="apply.html" class="apply-btn">Apply For Position</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <span class="job-dept">Software Operations</span>
+                    <h2 class="job-title">Embedded Systems Security</h2>
+                    <div class="job-meta">
+                        <span class="meta-item"><strong>Location:</strong> Remote / Global</span>
+                        <span class="meta-item"><strong>Classification:</strong> Full-Time</span>
+                        <span class="meta-item"><strong>Compensation:</strong> $190 / hr</span>
+                    </div>
+                    <p class="job-description">Perform comprehensive vulnerability audits on vehicular firmware, communication buses, and over-the-air installation packages.</p>
+                </div>
+                <a href="apply.html" class="apply-btn">Apply For Position</a>
+            </div>
+
+            <div class="job-card">
+                <div>
+                    <span class="job-dept">Supply Chain</span>
+                    <h2 class="job-title">Logistics Infrastructure Lead</h2>
+                    <div class="job-meta">
+                        <span class="meta-item"><strong>Location:</strong> Shanghai, CN (On-Site)</span>
+                        <span class="meta-item"><strong>Classification:</strong> Full-Time</span>
+                        <span class="meta-item"><strong>Compensation:</strong> $150 / hr</span>
+                    </div>
+                    <p class="job-description">Coordinate large-scale material intake pipelines and component sourcing strategies to ensure unbroken manufacturing capacity.</p>
+                </div>
+                <a href="apply.html" class="apply-btn">Apply For Position</a>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active">Overview</a></li>
-            <li><a href="track.html" class="highlight">➔ Track Order</a></li>
-            <li><a href="#" onclick="logout()">Sign Out</a></li>
-        </ul>
-    </aside>
+    </div>
 
-    <main>
-        <div class="header-profile">
-            <div>
-                <h1>Tesla Command Center</h1>
-            </div>
-            <div class="profile-info">
-                <span id="userEmail" style="font-size: 14px; color: var(--tesla-gray);">Guest</span>
-                <div class="avatar">EM</div>
-            </div>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>Global Deliveries</h3>
-                <div class="value">462,890</div>
-            </div>
-            <div class="stat-card">
-                <h3>Gigafactories Active</h3>
-                <div class="value">6</div>
-            </div>
-            <div class="stat-card">
-                <h3>FSD Miles Driven</h3>
-                <div class="value">1.6B+</div>
-            </div>
-        </div>
-
-        <h2 class="section-title">Current Product Catalog</h2>
-        <div class="product-table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product / Model</th>
-                        <th>Classification</th>
-                        <th>Base Price (USD)</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <strong><td>Model Y</td></strong>
-                        <td>Long Range SUV</td>
-                        <td>$44,990</td>
-                        <td><span class="badge">In Production</span></td>
-                    </tr>
-                    <tr>
-                        <strong><td>Model 3</td></strong>
-                        <td>Rear-Wheel Drive Sedan</td>
-                        <td>$38,990</td>
-                        <td><span class="badge">In Production</span></td>
-                    </tr>
-                    <tr>
-                        <strong><td>Cybertruck</td></strong>
-                        <td>AWD Dual Motor Pickup</td>
-                        <td>$79,990</td>
-                        <td><span class="badge">Scaling Up</span></td>
-                    </tr>
-                    <tr>
-                        <strong><td>Model S</td></strong>
-                        <td>Dual Motor Luxury Sedan</td>
-                        <td>$74,990</td>
-                        <td><span class="badge">Available</span></td>
-                    </tr>
-                    <tr>
-                        <strong><td>Model X</td></strong>
-                        <td>Dual Motor SUV</td>
-                        <td>$79,990</td>
-                        <td><span class="badge">Available</span></td>
-                    </tr>
-                    <tr>
-                        <strong><td>Tesla Solar Roof</td></strong>
-                        <td>Clean Energy Architecture</td>
-                        <td>Varies by installation</td>
-                        <td><span class="badge">Available</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
-
-    <script>
-        // Display the user's registered email if logged in via localStorage
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedEmail = localStorage.getItem('registeredEmail');
-            if (savedEmail) {
-                document.getElementById('userEmail').textContent = savedEmail;
-            }
-        });
-
-        // Function to wipe tracking tokens and head back to login
-        function logout() {
-            localStorage.removeItem('registeredEmail');
-            localStorage.removeItem('registeredPassword');
-            window.location.href = 'login.html';
-        }
-    </script>
 </body>
 </html>

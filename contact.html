@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Portfolio | Communications & Press</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --accent: #d4af37; /* Luxury Gold */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: rgba(18, 18, 22, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active { color: var(--accent); }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 140px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Two Column Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .profile-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid #1e1e24;
+            padding: 40px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .profile-image-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #222;
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .profile-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-card h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .profile-card .title-sub {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .profile-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Communications Links */
+        .channels-card {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .channel-box {
+            background-color: var(--bg-secondary);
+            border: 1px solid #1e1e24;
+            padding: 25px;
+            border-radius: 4px;
+        }
+
+        .channel-box h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .channel-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .channel-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .channel-link:hover {
+            color: var(--text-main);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">TESLA<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="ventures.html">Ventures</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Communications Desk</h1>
+            <p>Official routing channels for corporate affairs, institutional inquiries, and verified media engagement panels.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="profile-card">
+                <div class="profile-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=250&q=80" alt="Executive Leadership">
+                </div>
+                <h2>Executive Office</h2>
+                <span class="title-sub">Chief Engineering Operations</span>
+                <p>Overseeing system architecture across deep-space transit programs, global localized grid arrays, and high-volume heavy industrial production complexes.</p>
+            </div>
+
+            <div class="channels-card">
+                <div class="channel-box">
+                    <h3>Media Relations Panel</h3>
+                    <p>All press updates, digital documentation requests, and broadcast permissions must be routed through verified networks.</p>
+                    <a href="https://www.facebook.com" class="channel-link" target="_blank" rel="noopener noreferrer">Access Media Desk External Channel &rarr;</a>
+                </div>
+
+                <div class="channel-box">
+                    <h3>Institutional Inquiries</h3>
+                    <p>For corporate partnerships, joint engineering ventures, or state-level aerospace logistical distribution proposals.</p>
+                    <a href="mailto:corporate@example.com" class="channel-link">corporate@yourdomain.com</a>
+                </div>
+
+                <div class="channel-box">
+                    <h3>Public Affairs & Updates</h3>
+                    <p>Review standard public announcements, community impact summaries, and regulatory filings archive logs.</p>
+                    <a href="index.html" class="channel-link">Return to Core Portal</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Executive Portfolio. Prepared for Web Hosting.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Portfolio | Portal Gateway</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --accent: #d4af37; /* Luxury Gold */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            background-color: var(--bg-secondary);
+            border: 1px solid #222;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .auth-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: inline-block;
+        }
+
+        .auth-logo span { color: var(--accent); }
+
+        .auth-container h2 {
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            color: var(--text-muted);
+        }
+
+        .choice-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .auth-btn {
+            display: block;
+            padding: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid #444;
+        }
+
+        .btn-login:hover {
+            border-color: var(--text-main);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-signup {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-signup:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover { color: var(--text-main); }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <a href="index.html" class="auth-logo">TESLA<span>.</span></a>
+        <h2>Select Gateway Option</h2>
+        
+        <div class="choice-box">
+            <a href="login.html" class="auth-btn btn-login">Sign In to Account</a>
+            <a href="signup.html" class="auth-btn btn-signup">Create New Account</a>
+        </div>
+
+        <a href="about.html" class="back-link">&#8592; Return to About Section</a>
+    </div>
+
+</body>
+</html>

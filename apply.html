@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Portfolio | Register</title>
+    <title>Automotive Innovations | Employment Application</title>
     <style>
         :root {
             --bg-primary: #0a0a0c;
@@ -21,32 +21,41 @@
             background-color: var(--bg-primary);
             color: var(--text-main);
             font-family: var(--font-family);
-            height: 100vh;
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            min-height: 100vh;
         }
 
         .form-container {
             background-color: var(--bg-secondary);
             border: 1px solid #222;
             padding: 40px;
-            max-width: 450px;
+            max-width: 600px;
             width: 100%;
             border-radius: 4px;
         }
 
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
-        .form-group { margin-bottom: 20px; }
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
 
         label {
             display: block;
@@ -57,7 +66,7 @@
             margin-bottom: 8px;
         }
 
-        input[type="text"], input[type="email"], input[type="password"] {
+        input[type="text"], input[type="email"], select, textarea {
             width: 100%;
             padding: 14px;
             background-color: #18181f;
@@ -68,7 +77,15 @@
             transition: border-color 0.3s ease;
         }
 
-        input:focus { outline: none; border-color: var(--accent); }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
 
         .submit-btn {
             width: 100%;
@@ -85,40 +102,62 @@
             margin-top: 10px;
         }
 
-        .submit-btn:hover { background-color: transparent; color: var(--accent); }
-
-        .switch-prompt {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .submit-btn:hover {
+            background-color: transparent;
+            color: var(--accent);
         }
 
-        .switch-prompt a { color: var(--accent); text-decoration: none; }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .back-link:hover { color: var(--text-main); }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <h2>Create Account</h2>
-        <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+        <h2>Employment Application</h2>
+        <p class="subtitle">Please submit your professional credentials for talent evaluation.</p>
+        
+        <form action="review.html" method="GET">
             <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" required autocomplete="name">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" required name="applicant_name">
             </div>
+
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" required autocomplete="email">
+                <input type="email" id="email" required>
             </div>
+
             <div class="form-group">
-                <label for="password">Create Password</label>
-                <input type="password" id="password" required autocomplete="new-password">
+                <label for="position">Target Position</label>
+                <select id="position" required>
+                    <option value="">Select a position...</option>
+                    <option value="powertrain">EV Powertrain Engineer</option>
+                    <option value="autonomous">Autonomous Systems Developer</option>
+                    <option value="chassis">Chassis Dynamics Specialist</option>
+                    <option value="grid">Grid Storage Architect</option>
+                    <option value="security">Embedded Systems Security</option>
+                    <option value="logistics">Logistics Infrastructure Lead</option>
+                </select>
             </div>
-            <button type="submit" class="submit-btn">Register</button>
+
+            <div class="form-group">
+                <label for="experience">Professional Summary</label>
+                <textarea id="experience" placeholder="Outline your relevant engineering experience..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Portfolio</button>
         </form>
-        <div class="switch-prompt">
-            Already registered? <a href="login.html">Sign in here</a>
-        </div>
+
+        <a href="careers.html" class="back-link">&#8592; Back to Dashboard</a>
     </div>
 
 </body>

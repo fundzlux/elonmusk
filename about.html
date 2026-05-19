@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Portfolio | About & Ventures</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --accent: #d4af37; /* Luxury Gold */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(18, 18, 22, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active { color: var(--accent); }
+
+        .container {
+            max-width: 1200px;
+            margin: 120px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .venture-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+            background-color: var(--bg-secondary);
+            border: 1px solid #1e1e24;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .venture-section.reverse { flex-direction: row-reverse; }
+
+        .venture-image {
+            flex: 1;
+            min-height: 350px;
+            background-color: #222;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .venture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease;
+        }
+
+        .venture-section:hover .venture-image img { transform: scale(1.03); }
+
+        .venture-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .venture-tag {
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .venture-content h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .venture-content p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Call To Action Portal Section */
+        .portal-cta {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(18, 18, 22, 0.5), rgba(18, 18, 22, 0.9));
+            border: 1px dashed var(--accent);
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+
+        .portal-cta h3 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .portal-cta p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--accent);
+            color: var(--text-main);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .venture-section, .venture-section.reverse { flex-direction: column; }
+            .venture-image { width: 100%; height: 250px; min-height: auto; }
+            .venture-content { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">TESLA<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="ventures.html">Ventures</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="page-header">
+            <h1>Core Ventures & Ecosystem</h1>
+            <p>An overview of the engineering ecosystems designed to revolutionize transport, infrastructure, and computational intelligence.</p>
+        </div>
+
+        <section class="venture-section">
+            <div class="venture-image">
+                <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Electric Vehicle Innovation">
+            </div>
+            <div class="venture-content">
+                <span class="venture-tag">Sustainable Energy</span>
+                <h2>Electric Mobility Ecosystems</h2>
+                <p>Accelerating the global transition to sustainable energy through mass-market electric vehicles, scalable battery storage solutions, and integrated solar architectures.</p>
+            </div>
+        </section>
+
+        <section class="venture-section reverse">
+            <div class="venture-image">
+                <img src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=800&q=80" alt="Aerospace Logistics">
+            </div>
+            <div class="venture-content">
+                <span class="venture-tag">Aerospace & Logistics</span>
+                <h2>Interplanetary Infrastructure</h2>
+                <p>Revolutionizing space transport through fully reusable launch systems designed to reduce orbital payloads cost structures dramatically.</p>
+            </div>
+        </section>
+
+        <section class="portal-cta">
+            <h3>Access the Stakeholder Portal</h3>
+            <p>Join the network to receive formal briefings, project updates, and institutional notifications.</p>
+            <a href="auth.html" class="btn">Sign Up / Login</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Executive Portfolio. Prepared for Web Hosting.</p>
+    </footer>
+
+</body>
+</html>

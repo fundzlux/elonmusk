@@ -1,293 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesla - Electric Cars, Solar & Clean Energy</title>
+    <title>Executive Portfolio | Home</title>
     <style>
+        /* Premium Dark Theme Variables */
         :root {
-            --tesla-dark: #171a20;
-            --tesla-white: #ffffff;
-            --tesla-gray: #5c5e62;
-            --tesla-light: #f4f4f4;
-            --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --accent: #d4af37; /* Luxury Gold */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            letter-spacing: -0.5px;
         }
 
         body {
-            color: var(--tesla-dark);
-            background-color: var(--tesla-white);
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Top Navigation Header Bar */
+        /* Navigation Bar */
         header {
+            background-color: rgba(18, 18, 22, 0.95);
             position: fixed;
+            width: 100%;
             top: 0;
-            left: 0;
-            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 48px;
-            z-index: 10;
-            background: transparent;
-            transition: background-color 0.3s, backdrop-filter 0.3s;
+            padding: 20px;
         }
 
-        .logo svg {
-            width: 120px;
-            height: 24px;
-            fill: var(--tesla-dark);
-            transition: fill 0.5s var(--transition-smooth);
-        }
-
-        nav.center-nav {
-            display: flex;
-            gap: 8px;
-        }
-
-        nav.center-nav a, nav.right-nav a {
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--text-main);
             text-decoration: none;
-            color: var(--tesla-dark);
-            font-size: 14px;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s, color 0.5s;
         }
 
-        nav.center-nav a:hover, nav.right-nav a:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+        .logo span {
+            color: var(--accent);
         }
 
-        /* Full Screen Snap Layout */
-        .scroll-container {
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-            height: 100vh;
-        }
-
-        section {
-            scroll-snap-align: start;
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-            background-size: cover;
-            background-position: center;
+        nav ul {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
             align-items: center;
-            padding: 16vh 24px 10vh 24px;
-        }
-
-        /* Styled Section Background Arrays using premium clean gradients */
-        #model-s {
-            background-image: linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.15)), url('https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1920&q=80');
-        }
-
-        #elon-vision {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
-            color: var(--tesla-white);
-        }
-
-        .hero-title {
+            justify-content: center;
             text-align: center;
-            animation: fadeInUp 1s var(--transition-smooth);
+            padding: 0 20px;
+            background: linear-gradient(rgba(10, 10, 12, 0.8), rgba(10, 10, 12, 0.9)), url('placeholder-background.jpg') no-repeat center center/cover;
         }
 
-        .hero-title h1 {
-            font-size: 40px;
-            font-weight: 500;
-            margin-bottom: 8px;
+        .hero-content {
+            max-width: 800px;
         }
 
-        .hero-title p {
-            font-size: 14px;
-            color: var(--tesla-gray);
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        #elon-vision .hero-title p {
-            color: var(--tesla-light);
-            max-width: 500px;
-            margin: 8px auto 0 auto;
-            line-height: 1.5;
-        }
-
-        /* Call To Action Buttons */
-        .cta-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-            width: 100%;
-            max-width: 550px;
-            animation: fadeInUp 1.2s var(--transition-smooth);
-        }
-
-        .button-group {
-            display: flex;
-            gap: 20px;
-            width: 100%;
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
         }
 
         .btn {
-            flex: 1;
-            padding: 12px 24px;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--accent);
+            color: var(--text-main);
             text-decoration: none;
-            transition: opacity 0.3s;
-            backdrop-filter: blur(8px);
-        }
-
-        .btn-primary {
-            background-color: rgba(23, 26, 32, 0.85);
-            color: var(--tesla-white);
-        }
-
-        .btn-secondary {
-            background-color: rgba(244, 244, 244, 0.7);
-            color: var(--tesla-dark);
-        }
-
-        .btn-musk-primary {
-            background-color: var(--tesla-white);
-            color: var(--tesla-dark);
-        }
-
-        .btn-musk-secondary {
-            background-color: transparent;
-            border: 2px solid var(--tesla-white);
-            color: var(--tesla-white);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            background: transparent;
         }
 
         .btn:hover {
-            opacity: 0.85;
-        }
-
-        .arrow-indicator {
-            font-size: 24px;
-            animation: bounce 2s infinite;
+            background-color: var(--accent);
+            color: var(--bg-primary);
             cursor: pointer;
-            user-select: none;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-6px); }
-            60% { transform: translateY(-3px); }
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-            header { padding: 20px 24px; }
-            .center-nav { display: none; } /* Native behavior layout for mobile viewports */
-            .button-group { flex-direction: column; gap: 12px; }
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Simplified for mobile layout */
         }
     </style>
 </head>
 <body>
 
-    <header id="site-header">
-        <div class="logo">
-            <svg viewBox="0 0 100 20"><text x="0" y="15" font-family="sans-serif" font-weight="900" letter-spacing="4">TESLA</text></svg>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">TESLA<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="ventures.html">Ventures</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="center-nav">
-            <a href="#model-s" onclick="adjustTheme('dark')">Model S</a>
-            <a href="#model-3">Model 3</a>
-            <a href="#model-x">Model X</a>
-            <a href="#model-y">Model Y</a>
-            <a href="#elon-vision" onclick="adjustTheme('light')">Leadership & Vision</a>
-        </nav>
-        <nav class="right-nav" id="auth-nav">
-            <a href="login.html" id="login-link">Sign In</a>
-            <a href="signup.html" id="signup-link">Create Account</a>
-        </nav>
     </header>
 
-    <div class="scroll-container" id="main-scroller">
-        
-        <section id="model-s">
-            <div class="hero-title">
-                <h1>Model S</h1>
-                <p>Configure Premium Dual Motor All-Wheel Drive Platforms</p>
-            </div>
-
-            <div class="cta-container">
-                <div class="button-group">
-                    <a href="configurator.html" class="btn btn-primary">Custom Order</a>
-                    <a href="fleet_overview.html" class="btn btn-secondary">Explore Inventory</a>
-                </div>
-                <div class="arrow-indicator" onclick="scrollToVision()">↓</div>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Shaping the Future</h1>
+                <p>Exploring the intersection of technology, engineering, and global infrastructure.</p>
+                <a href="about.html" class="btn">Explore the Vision</a>
             </div>
         </section>
+    </main>
 
-        <section id="elon-vision">
-            <div class="hero-title">
-                <h1>Autonomy & Compute Scaling</h1>
-                <p>Engineering Master Plan initiatives to convert structural production capacity into high-efficiency neural compute arrays, sustainable storage grids, and humanoid robotics pipelines.</p>
-            </div>
+    <footer>
+        <p>&copy; 2026 Executive Portfolio. Prepared for Web Hosting.</p>
+    </footer>
 
-            <div class="cta-container">
-                <div class="button-group">
-                    <a href="biography_blueprint.html" class="btn btn-musk-primary">Strategic Milestones</a>
-                    <a href="configurator.html" class="btn btn-musk-secondary">Network Configurator</a>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <script>
-        // Track intersection boundaries to swap header text themes cleanly depending on the background contrast
-        const scroller = document.getElementById('main-scroller');
-        
-        function adjustTheme(theme) {
-            const header = document.getElementById('site-header');
-            const svg = header.querySelector('.logo svg');
-            const links = header.querySelectorAll('nav a');
-            
-            if (theme === 'light') {
-                svg.style.fill = '#ffffff';
-                links.forEach(link => link.style.color = '#ffffff');
-            } else {
-                svg.style.fill = '#171a20';
-                links.forEach(link => link.style.color = '#171a20');
-            }
-        }
-
-        function scrollToVision() {
-            document.getElementById('elon-vision').scrollIntoView({ behavior: 'smooth' });
-            adjustTheme('light');
-        }
-
-        // Listen for scroll boundaries directly to alter navigation aesthetics automatically
-        scroller.addEventListener('scroll', () => {
-            const visionTop = document.getElementById('elon-vision').getBoundingClientRect().top;
-            if (visionTop <= window.innerHeight / 2) {
-                adjustTheme('light');
-            } else {
-                adjustTheme('dark');
-            }
-        });
-    </script>
 </body>
 </html>

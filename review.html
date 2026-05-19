@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Innovations | Submission Review</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --accent: #d4af37; /* Gold */
+            --success: #2ecc71; /* Green */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .status-container {
+            background-color: var(--bg-secondary);
+            border: 1px solid #222;
+            padding: 50px 40px;
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Visual Status Indicators */
+        .status-icon {
+            width: 60px;
+            height: 60px;
+            border: 3px solid #222;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 30px auto;
+            animation: spin 2s linear infinite;
+        }
+
+        /* Success Checkmark Placeholder Styling */
+        .status-icon.success-state {
+            border-color: var(--success);
+            animation: none;
+            position: relative;
+        }
+
+        .status-icon.success-state::after {
+            content: "✓";
+            color: var(--success);
+            font-size: 2rem;
+            line-height: 54px;
+            font-weight: bold;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .status-badge.success-state {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--success);
+            border-color: rgba(46, 204, 113, 0.2);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            transition: color 0.5s ease;
+        }
+
+        .home-btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: transparent;
+            border: 1px solid #444;
+            color: var(--text-main);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            border-color: var(--text-main);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="status-container">
+        <div id="visual-indicator" class="status-icon"></div>
+        <h2 id="heading-text">Application Received</h2>
+        <div id="badge-indicator" class="status-badge">Under Background Review</div>
+        
+        <p id="status-description">Your professional profile and engineering credentials have been logged into our global talent acquisition pipeline. The human resources division will cross-reference your documentation against structural prerequisites.</p>
+
+        <a href="index.html" class="home-btn">Return to Main Desk</a>
+    </div>
+
+    <script>
+        // Duration in milliseconds before transitioning states (5000ms = 5 seconds)
+        // For a longer duration, increase the number (e.g., 60000 for 1 minute)
+        const transitionDelay = 5000; 
+
+        setTimeout(() => {
+            // 1. Update the visual loading wheel to a static success checkmark
+            const visual = document.getElementById('visual-indicator');
+            visual.classList.add('success-state');
+
+            // 2. Update the main header text
+            document.getElementById('heading-text').innerText = "Submission Verified";
+
+            // 3. Transform the badge color and layout text
+            const badge = document.getElementById('badge-indicator');
+            badge.innerText = "Process Successful";
+            badge.classList.add('success-state');
+
+            // 4. Update the informative text description
+            document.getElementById('status-description').innerText = "The system baseline analysis is complete. Your profile has been securely indexed. No further action is required at this stage; correspondence will follow via registered credentials.";
+
+        }, transitionDelay);
+    </script>
+
+</body>
+</html>
