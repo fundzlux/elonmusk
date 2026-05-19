@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order | Tesla</title>
+    <style>
+        :root {
+            --tesla-black: #171a20;
+            --tesla-gray: #393c41;
+            --tesla-light-gray: #f4f4f4;
+            --tesla-blue: #3d69e1;
+            --text-dark: #171a20;
+            --success-green: #2e7d32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Gotham SSm', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 250px;
+            background-color: var(--tesla-light-gray);
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e2e4e4;
+        }
+
+        .logo svg {
+            width: 100px;
+            height: 20px;
+            fill: var(--tesla-black);
+            margin-bottom: 40px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--tesla-gray);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 16px;
+            border-radius: 12px;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--tesla-black);
+        }
+
+        .nav-links a.highlight {
+            color: var(--tesla-blue);
+            font-weight: 600;
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin-bottom: 30px;
+        }
+
+        /* Search / Tracking Input Box */
+        .search-box {
+            background: var(--tesla-light-gray);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .search-box p {
+            font-size: 14px;
+            color: var(--tesla-gray);
+            margin-bottom: 12px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 20px;
+            background-color: #ffffff;
+            border: 1px solid #d0d1d2;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .btn-track {
+            padding: 12px 24px;
+            background-color: var(--tesla-black);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-track:hover {
+            background-color: var(--tesla-gray);
+        }
+
+        /* Order Details Tracking UI */
+        .tracking-card {
+            border: 1px solid #e2e4e4;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 700px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .order-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: var(--tesla-gray);
+        }
+
+        .order-meta strong {
+            color: var(--tesla-black);
+        }
+
+        /* Progress Visual Steps */
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 15px;
+            left: 40px;
+            right: 40px;
+            height: 4px;
+            background-color: var(--tesla-light-gray);
+            z-index: 1;
+        }
+
+        .progress-line-fill {
+            height: 100%;
+            width: 66%; /* Updates dynamically depending on status */
+            background-color: var(--success-green);
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            text-align: center;
+            width: 80px;
+        }
+
+        .step-node {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: var(--tesla-light-gray);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--tesla-light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--tesla-gray);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step.completed .step-node, .step.active .step-node {
+            background-color: var(--success-green);
+            box-shadow: 0 0 0 2px var(--success-green);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 12px;
+            color: var(--tesla-gray);
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: var(--tesla-black);
+            font-weight: 600;
+        }
+
+        /* History Timeline Log */
+        .timeline {
+            list-style: none;
+            border-left: 2px solid var(--tesla-light-gray);
+            padding-left: 20px;
+            margin-left: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #d0d1d2;
+        }
+
+        .timeline-item.latest::before {
+            background-color: var(--success-green);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: var(--tesla-gray);
+            margin-bottom: 2px;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; border-right: none; border-bottom: 1px solid #e2e4e4; }
+            main { padding: 20px; }
+            .order-meta { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="logo">
+            <svg viewBox="0 0 342 35" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 1.1A9.7 9.7 0 0 1 7 0h11l.5.1a10 10 0 0 1 5.4 3.1L28.2 8l4.3-4.8A10 10 0 0 1 38 0h11a9.7 9.7 0 0 1 7 1.1 10.3 10.3 0 0 1 3.5 5.3L63 21.6h-7.6l-2-6H32.7l-2 6h-7.7l3.7-15.3A10.3 10.3 0 0 1 30.2 11l4.4-4.9L30 1.3H19l-4 4.8 3.7 15.5h-7.7L7 6.4A10.3 10.3 0 0 1 10.5 1.1zM106.2 0h7.6v21.6h-7.6zM137 0h37.4v4.3h-29.8v4.3h28v4.2h-28v4.5h29.8v4.3H137zm52.2 4.3h-16.1V0h39.8v4.3h-16v17.3h-7.7zm57.2 13h23v4.3h-30.6V0h7.6v17.3zm60.7-13h-16.1V0h39.8v4.3h-16v17.3h-7.7zM32.7 11.3h20.7L43 3.1z"/>
+            </svg>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Overview</a></li>
+            <li><a href="#" class="active">Track Order</a></li>
+            <li><a href="biography.html" class="highlight">➔ Elon's Biography</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <h1>Delivery Tracking</h1>
+
+        <div class="search-box">
+            <p>Enter your unique Reference Number (RN) to parse status updates:</p>
+            <div class="input-group">
+                <input type="text" id="rnInput" value="RN119842069" placeholder="e.g., RN118274920">
+                <button type="button" class="btn-track" onclick="findOrder()">Search</button>
+            </div>
+        </div>
+
+        <div class="tracking-card">
+            <div class="order-meta">
+                <div>Order: <strong id="orderNum">RN119842069</strong></div>
+                <div>Est. Delivery: <strong>June 12 - June 26</strong></div>
+                <div>Vehicle: <strong>Cybertruck AWD</strong></div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-line">
+                    <div class="progress-line-fill"></div>
+                </div>
+                <div class="step completed">
+                    <div class="step-node">✓</div>
+                    <div class="step-label">Ordered</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-node">✓</div>
+                    <div class="step-label">Configured</div>
+                </div>
+                <div class="step active">
+                    <div class="step-node">3</div>
+                    <div class="step-label">In Transit</div>
+                </div>
+                <div class="step">
+                    <div class="step-node">4</div>
+                    <div class="step-label">Delivery</div>
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #e2e4e4; margin-bottom: 25px;">
+
+            <ul class="timeline">
+                <li class="timeline-item latest">
+                    <div class="timeline-date">Today - 08:34 AM</div>
+                    <strong>Vehicle loaded onto carrier transit unit</strong>
+                    <p style="font-size: 13px; color: var(--tesla-gray); margin-top: 2px;">Departed Gigafactory Texas logistics dispatch facility.</p>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-date">Yesterday - 02:15 PM</div>
+                    <strong>VIN Assigned & Quality Inspection Certified</strong>
+                    <p style="font-size: 13px; color: var(--tesla-gray); margin-top: 2px;">Final software calibration complete.</p>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-date">3 Days Ago</div>
+                    <strong>Order confirmed & downpayment verified</strong>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        function findOrder() {
+            const inputVal = document.getElementById('rnInput').value.trim();
+            if(inputVal) {
+                document.getElementById('orderNum').textContent = inputVal.toUpperCase();
+            }
+        }
+    </script>
+</body>
+</html>

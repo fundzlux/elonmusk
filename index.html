@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla - Electric Cars, Solar & Clean Energy</title>
+    <style>
+        :root {
+            --tesla-dark: #171a20;
+            --tesla-white: #ffffff;
+            --tesla-gray: #5c5e62;
+            --tesla-light: #f4f4f4;
+            --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        body {
+            color: var(--tesla-dark);
+            background-color: var(--tesla-white);
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation Header Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 48px;
+            z-index: 10;
+            background: transparent;
+            transition: background-color 0.3s, backdrop-filter 0.3s;
+        }
+
+        .logo svg {
+            width: 120px;
+            height: 24px;
+            fill: var(--tesla-dark);
+            transition: fill 0.5s var(--transition-smooth);
+        }
+
+        nav.center-nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        nav.center-nav a, nav.right-nav a {
+            text-decoration: none;
+            color: var(--tesla-dark);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.5s;
+        }
+
+        nav.center-nav a:hover, nav.right-nav a:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Full Screen Snap Layout */
+        .scroll-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+
+        section {
+            scroll-snap-align: start;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16vh 24px 10vh 24px;
+        }
+
+        /* Styled Section Background Arrays using premium clean gradients */
+        #model-s {
+            background-image: linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.15)), url('https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1920&q=80');
+        }
+
+        #elon-vision {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
+            color: var(--tesla-white);
+        }
+
+        .hero-title {
+            text-align: center;
+            animation: fadeInUp 1s var(--transition-smooth);
+        }
+
+        .hero-title h1 {
+            font-size: 40px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .hero-title p {
+            font-size: 14px;
+            color: var(--tesla-gray);
+        }
+
+        #elon-vision .hero-title p {
+            color: var(--tesla-light);
+            max-width: 500px;
+            margin: 8px auto 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Call To Action Buttons */
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            width: 100%;
+            max-width: 550px;
+            animation: fadeInUp 1.2s var(--transition-smooth);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-primary {
+            background-color: rgba(23, 26, 32, 0.85);
+            color: var(--tesla-white);
+        }
+
+        .btn-secondary {
+            background-color: rgba(244, 244, 244, 0.7);
+            color: var(--tesla-dark);
+        }
+
+        .btn-musk-primary {
+            background-color: var(--tesla-white);
+            color: var(--tesla-dark);
+        }
+
+        .btn-musk-secondary {
+            background-color: transparent;
+            border: 2px solid var(--tesla-white);
+            color: var(--tesla-white);
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        .arrow-indicator {
+            font-size: 24px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-6px); }
+            60% { transform: translateY(-3px); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px 24px; }
+            .center-nav { display: none; } /* Native behavior layout for mobile viewports */
+            .button-group { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="site-header">
+        <div class="logo">
+            <svg viewBox="0 0 100 20"><text x="0" y="15" font-family="sans-serif" font-weight="900" letter-spacing="4">TESLA</text></svg>
+        </div>
+        <nav class="center-nav">
+            <a href="#model-s" onclick="adjustTheme('dark')">Model S</a>
+            <a href="#model-3">Model 3</a>
+            <a href="#model-x">Model X</a>
+            <a href="#model-y">Model Y</a>
+            <a href="#elon-vision" onclick="adjustTheme('light')">Leadership & Vision</a>
+        </nav>
+        <nav class="right-nav" id="auth-nav">
+            <a href="login.html" id="login-link">Sign In</a>
+            <a href="signup.html" id="signup-link">Create Account</a>
+        </nav>
+    </header>
+
+    <div class="scroll-container" id="main-scroller">
+        
+        <section id="model-s">
+            <div class="hero-title">
+                <h1>Model S</h1>
+                <p>Configure Premium Dual Motor All-Wheel Drive Platforms</p>
+            </div>
+
+            <div class="cta-container">
+                <div class="button-group">
+                    <a href="configurator.html" class="btn btn-primary">Custom Order</a>
+                    <a href="fleet_overview.html" class="btn btn-secondary">Explore Inventory</a>
+                </div>
+                <div class="arrow-indicator" onclick="scrollToVision()">↓</div>
+            </div>
+        </section>
+
+        <section id="elon-vision">
+            <div class="hero-title">
+                <h1>Autonomy & Compute Scaling</h1>
+                <p>Engineering Master Plan initiatives to convert structural production capacity into high-efficiency neural compute arrays, sustainable storage grids, and humanoid robotics pipelines.</p>
+            </div>
+
+            <div class="cta-container">
+                <div class="button-group">
+                    <a href="biography_blueprint.html" class="btn btn-musk-primary">Strategic Milestones</a>
+                    <a href="configurator.html" class="btn btn-musk-secondary">Network Configurator</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Track intersection boundaries to swap header text themes cleanly depending on the background contrast
+        const scroller = document.getElementById('main-scroller');
+        
+        function adjustTheme(theme) {
+            const header = document.getElementById('site-header');
+            const svg = header.querySelector('.logo svg');
+            const links = header.querySelectorAll('nav a');
+            
+            if (theme === 'light') {
+                svg.style.fill = '#ffffff';
+                links.forEach(link => link.style.color = '#ffffff');
+            } else {
+                svg.style.fill = '#171a20';
+                links.forEach(link => link.style.color = '#171a20');
+            }
+        }
+
+        function scrollToVision() {
+            document.getElementById('elon-vision').scrollIntoView({ behavior: 'smooth' });
+            adjustTheme('light');
+        }
+
+        // Listen for scroll boundaries directly to alter navigation aesthetics automatically
+        scroller.addEventListener('scroll', () => {
+            const visionTop = document.getElementById('elon-vision').getBoundingClientRect().top;
+            if (visionTop <= window.innerHeight / 2) {
+                adjustTheme('light');
+            } else {
+                adjustTheme('dark');
+            }
+        });
+    </script>
+</body>
+</html>
